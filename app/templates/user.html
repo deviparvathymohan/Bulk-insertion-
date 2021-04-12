@@ -1,0 +1,50 @@
+{%block content%}
+<h4>User file</h4>
+   <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <input type="file" name="employeefile">
+        <button type="submit">Upload</button>
+    </form>
+{%endblock%} 
+{% comment %} {%if messages%}
+    {%for message in messages%}
+        <div>
+            <strong>{{message|safe}}</strong>
+        </div>
+    {%endfor%}
+{%else%}
+{{order}}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Upload a file</label>
+    <input type="file" name="file">
+    <p> ONLY accept csv files</p>
+    <button type="Submit">Upload</button>
+</form>
+{%endif%} {% endcomment %} 
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Bulk Data Insert{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>Bulk Data Insert</h1>
+    {% if user.is_authenticated %}
+    Hi {{ user.username }}! Your user id is {{ user.id }} </br>
+      <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+  </header>
+  <hr>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <hr>
+  <footer>
+  </footer>
+</body>
+</html> {% endcomment %}
